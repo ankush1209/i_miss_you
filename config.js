@@ -39,10 +39,10 @@ const CONFIG = {
 
     // Action-based soundtrack mapping
     music: {
-        mainTheme: "assets/vienna.mp3",
-        airport: "assets/waiting_for_you.mp3",
-        videoCall: "assets/gulabi_aankhen_atif.mp3",
-        reunionTrack: "assets/whenever_you_call.mp3"
+        mainTheme: "vienna.mp3",
+        airport: "waiting_for_you.mp3",
+        videoCall: "gulabi_aankhen_atif.mp3",
+        reunionTrack: "whenever_you_call.mp3"
     },
 
     quotes: [

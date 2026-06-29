@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Until We Meet Again ❤️</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Third-Party CDNs -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+</head>
+<body>
+
+    <!-- Ambient Animation Layer -->
+    <div id="ambient-container" class="ambient-layer" aria-hidden="true"></div>
+
+    <!-- Loading Screen -->
+    <div id="loader" class="loader-overlay">
+        <div class="loader-content">
+            <div class="loader-heart">❤️</div>
+            <p class="loader-text">Preparing our universe...</p>
+            <div class="loader-bar"><div class="loader-progress"></div></div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main id="main-content" class="main-wrapper hidden">
+        
+        <!-- Header & Ambient Music Controls -->
+        <header class="app-header">
+            <div class="logo">Until We Meet Again <span class="heart-pulse">❤️</span></div>
+            <div class="music-controls">
+                <button id="music-toggle" class="btn-icon-glass" aria-label="Toggle Music">
+                    <i id="music-icon" class="fas fa-music"></i>
+                </button>
+                <div class="volume-slider-container">
+                    <i class="fas fa-volume-down"></i>
+                    <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.5" aria-label="Volume Slider">
+                    <i class="fas fa-volume-up"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="hero-section" class="hero-container">
+            <h1 id="main-heading" class="hero-title">Counting down every heartbeat...</h1>
+            <p id="sub-heading" class="hero-subtitle">Distance means so little when someone means so much.</p>
+        </section>
+
+        <!-- Interactive Plane/Cloud Path Canvas Area -->
+        <div id="flight-corridor" class="flight-container" aria-hidden="true">
+            <div id="romantic-plane" class="animated-plane">
+                <i class="fas fa-plane"></i>
+                <div class="plane-trail">❤️</div>
+            </div>
+        </div>
+
+        <!-- Countdown Presentation Layer -->
+        <section class="countdown-section">
+            <div id="countdown-display" class="countdown-glass-card">
+                <div class="countdown-item">
+                    <span id="days" class="time-number">00</span>
+                    <span class="time-label">Days</span>
+                </div>
+                <div class="countdown-divider">:</div>
+                <div class="countdown-item">
+                    <span id="hours" class="time-number">00</span>
+                    <span class="time-label">Hours</span>
+                </div>
+                <div class="countdown-divider">:</div>
+                <div class="countdown-item">
+                    <span id="minutes" class="time-number">00</span>
+                    <span class="time-label">Minutes</span>
+                </div>
+                <div class="countdown-divider">:</div>
+                <div class="countdown-item">
+                    <span id="seconds" class="time-number">00</span>
+                    <span class="time-label">Seconds</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visual Context Card (GIFs & Moving Quotes) -->
+        <section class="dynamic-content-section">
+            <div class="glass-card modern-card">
+                <div class="gif-container">
+                    <img id="dynamic-gif" src="" alt="Romantic Illustration Mood" class="romantic-gif-display">
+                </div>
+                <div class="quote-container">
+                    <blockquote id="romantic-quote" class="romantic-quote-text">Loading a beautiful thought...</blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Action Controls -->
+        <section class="action-section">
+            <div class="button-group">
+                <button id="btn-airport-pickup" class="btn-romantic btn-primary">
+                    <i class="fas fa-car-side"></i> Coordinate Airport Pickup
+                </button>
+                <button id="btn-video-call" class="btn-romantic btn-secondary">
+                    <i class="fas fa-video"></i> Schedule "Miss You" Call
+                </button>
+                <a href="https://ankush1209.github.io/date_with_ankush/" target="_blank" rel="noopener noreferrer" id="btn-date-scheduler" class="btn-romantic btn-tertiary">
+                    <i class="fas fa-calendar-alt"></i> Date Scheduler
+                </a>
+            </div>
+        </section>
+
+        <!-- Audio Repository Element -->
+        <audio id="hidden-audio-player" preload="auto" loop></audio>
+
+        <!-- Toast Notifications Hub -->
+        <div id="toast-hub" class="toast-container" aria-live="assertive"></div>
+
+        <!-- Footer Context -->
+        <footer class="app-footer">
+            <p>Made with love, always. Together again soon.</p>
+        </footer>
+    </main>
+
+    <!-- Modal: Video Call Planner -->
+    <div id="modal-video" class="modal-overlay" aria-hidden="true" role="dialog">
+        <div class="modal-card glass-modal">
+            <button class="modal-close" data-close-modal aria-label="Close Modal">&times;</button>
+            <div class="modal-header">
+                <h3><i class="fas fa-video"></i> Secure Virtual Date</h3>
+                <p>Can't wait? Let's anchor a digital face-to-face meet into the timeline.</p>
+            </div>
+            <form id="form-video-call" class="modal-form">
+                <input type="hidden" name="booking_type" value="Virtual Date Booking">
+                <!-- Name field removed as requested -->
+                <div class="form-group">
+                    <label for="video-datetime">Preferred Date & Time</label>
+                    <input type="datetime-local" id="video-datetime" name="datetime" required>
+                </div>
+                <div class="form-group">
+                    <label for="video-message">Virtual Date Sweet Note</label>
+                    <textarea id="video-message" name="message" rows="3" placeholder="What are we doing? Coffee chat? Dinner movie night?"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">
+                    <span class="btn-text">Lock In Virtual Date</span>
+                    <span class="btn-loader hidden"><i class="fas fa-spinner fa-spin"></i> Mapping Date...</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script Architecture Sequence -->
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/quotes.js"></script>
+    <script src="js/music.js"></script>
+    <script src="js/animation.js"></script>
+    <script src="js/plane.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/email.js"></script>
+    <script src="js/easterEggs.js"></script>
+</body>
+</html>

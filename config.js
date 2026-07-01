@@ -31,9 +31,9 @@ const CONFIG = {
             "https://media.giphy.com/media/aYzH8ZuH97cYWbUR9a/giphy.gif"
         ],
         celebration: [
-            "https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif",
-            "https://media.giphy.com/media/LmCYGls71WigR87KTS/giphy.gif",
-            "https://media.giphy.com/media/142t0S2SOwM6IG/giphy.gif"
+            "https://media.giphy.com/media/5dZU7lSAacV1d1mq5C/giphy.gif",
+            "https://media.giphy.com/media/3o7524pFB5F6PNl5Vm/giphy.gif",
+            "https://media.giphy.com/media/enrOr10z9xrx9dTTRJ/giphy.gif"
         ]
     },
 
